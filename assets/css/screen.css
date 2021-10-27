@@ -84,7 +84,7 @@ html,
 /* ---------------------------------------------------------- */
 
 .gh-card:not(:first-child) {
-    margin: 8vmin auto 0;
+    margin: 2vmin auto 0;
 }
 
 .gh-card-link {
