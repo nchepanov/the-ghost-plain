@@ -4,6 +4,7 @@ const pump = require('pump');
 // gulp plugins and utils
 var livereload = require('gulp-livereload');
 var postcss = require('gulp-postcss');
+var sass = require('gulp-sass')(require('sass'));
 var zip = require('gulp-zip');
 var uglify = require('gulp-uglify');
 var beeper = require('beeper');
@@ -44,12 +45,18 @@ function css(done) {
     ];
 
     pump([
-        src('assets/css/*.css', {sourcemaps: true}),
+        src('assets/built/css/*.css', {sourcemaps: true}),
         postcss(processors),
         dest('assets/built/', {sourcemaps: '.'}),
         livereload()
     ], handleError(done));
 }
+
+function scss(done) {
+    return src('assets/scss/*.scss')
+      .pipe(sass().on('error', handleError(done)))
+      .pipe(dest('assets/built/css'));
+};
 
 function js(done) {
     pump([
@@ -76,10 +83,11 @@ function zipper(done) {
     ], handleError(done));
 }
 
-const cssWatcher = () => watch('assets/css/**', css);
+const buildStyles = series(scss, css)
+const scssWatcher = () => watch('assets/scss/**', buildStyles);
 const hbsWatcher = () => watch(['*.hbs', '**/**/*.hbs', '!node_modules/**/*.hbs'], hbs);
-const watcher = parallel(cssWatcher, hbsWatcher);
-const build = series(css, js);
+const watcher = parallel(scssWatcher, hbsWatcher);
+const build = series(buildStyles, js);
 const dev = series(build, serve, watcher);
 
 exports.build = build;

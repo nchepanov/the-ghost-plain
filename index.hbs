@@ -1,15 +1,30 @@
 {{!< default}}
 
-<div class="gh-page">
-    <div class="gh-container">
+<section>
 
-        <div class="gh-postfeed">
-        {{#foreach posts}}
+	{{#foreach posts}}
+        {{!-- TODO
+		{% unless post.next %}
+			<h3 class="code">{{ post.date | date: '%Y' }}</h3>
+		{% else %}
+			{% capture year %}{{ post.date | date: '%Y' }}{% endcapture %}
+			{% capture nyear %}{{ post.next.date | date: '%Y' }}{% endcapture %}
+			{% if year != nyear %}
+				<h3 class="code">{{ post.date | date: '%Y' }}</h3>
+			{% endif %}
+		{% endunless %}
+        --}}
+		<ul>
+			<li>
+				<div class="post-date code">
+					<span>{{date format="D MMM YYYY"}}</span>
+				</div>
+				<div class="title">
+					<a href="{{url}}">{{title}}</a>
+				</div>
+			</li>
+		</ul>
 
-            {{> "card"}} {{!-- partials/card.hbs --}}
+	{{/foreach}}
 
-        {{/foreach}}
-        </div>
-
-    </div>
-</div>
+</section>
