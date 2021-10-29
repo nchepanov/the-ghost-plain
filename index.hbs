@@ -1,10 +1,17 @@
 {{!< default}}
 
-<section>
-
+<section class="site-description">
+	<div class="center">
+		<h1>{{@site.description}}</h1>
         {{#if @site.navigation}}
-        <div class="page-navigation code">{{navigation}}</div>
+        {{navigation}}
         {{/if}}
+	</div>
+
+	<div class="divider"></div>
+</section>
+
+<section>
 
 	{{#foreach posts}}
         {{!-- TODO
