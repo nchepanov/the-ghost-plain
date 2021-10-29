@@ -2,6 +2,10 @@
 
 <section>
 
+        {{#if @site.navigation}}
+        <div class="page-navigation code">{{navigation}}</div>
+        {{/if}}
+
 	{{#foreach posts}}
         {{!-- TODO
 		{% unless post.next %}
