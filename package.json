@@ -2,7 +2,7 @@
     "name": "the-ghost-plain-theme",
     "description": "The Plain theme from Jekyll, adopted for Ghost",
     "demo": "https://chepanov.com",
-    "version": "1.2.0",
+    "version": "1.3.0",
     "engines": {
         "ghost": ">=4.0.0",
         "ghost-api": "v4"
