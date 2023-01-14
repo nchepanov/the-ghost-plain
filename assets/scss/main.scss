@@ -432,3 +432,8 @@ section {
     -webkit-transform: none;
   }
 }
+
+.kg-width-full,
+.kg-width-wide {
+    // required by gcsan to properly validate the theme
+}
