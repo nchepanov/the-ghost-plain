@@ -1,8 +1,64 @@
-# Ghost Starter Theme
+# The Ghost version of Jekyll "the-plain"
 
-A starter framework for Ghost themes! Fork this repository and start your development here with all the main things you need to develop a custom Ghost theme.
+Based on https://heiswayi.github.io/the-plain/
 
-&nbsp;
+Used in https://chepanov.com
+
+# Development
+
+## Setup
+
+1. Install ghost-cli:
+    
+    `npm install -g ghost-cli@latest`
+
+1. Create new workspace (outside of the git tree!)
+
+    `mkdir ghost-workspace && cd ghost-workspace && ghost install local`
+
+1. Symlink this repository folder inside `content/themes`, for example:
+
+    `ln -s /Users/nchepanov/dev/the-ghost-plain content/themes/the-ghost-plain`
+
+1. Populate with sample data from current blog. Enter a simple password, like `administrator`
+    
+    `ghost import ../the-ghost-plain/spiritual-pragmatism.ghost.2023-08-20-17-07-04.json`
+
+1. Start the instance
+
+    `ghost start`
+
+1. Login using `nikita@chepanov.com` as username and `administrator` as password and activate `the-ghost-plain` under advanced 
+
+    http://localhost:2368/ghost/#/settings/design/change-theme
+
+1. Almost there, images are not part of the exported bundle, grab the logo manually
+
+    ```
+    mkdir -p content/images/2021/10/
+    cd  content/images/2021/10/
+    curl -OL https://chepanov.com/content/images/2021/10/chepanov-logo-1x1@2x--1-.png
+    ```
+
+# Now to iterate on the theme (setup live reloading)
+
+Styles are compiled using Gulp/PostCSS to polyfill future CSS spec. You'll need [Node](https://nodejs.org/), [Yarn](https://yarnpkg.com/) and [Gulp](https://gulpjs.com) installed globally. After that, from the theme's root directory:
+
+
+1. All commands run in the git root (not in `ghost-workspace`):
+
+    `yarn install && yarn dev`
+
+2. Now as changes are made to any of the resources, now you can edit `/assets/css/` files,
+    which will be compiled to `/assets/built/` automatically.
+
+# Package and upload the theme to the website
+
+The `zip` Gulp task packages the theme files into `dist/<theme-name>.zip`, which you can then upload to your site.
+
+```bash
+yarn zip
+```
 
 # First time using a Ghost theme?
 
@@ -24,28 +80,6 @@ One neat trick is that you can also create custom one-off templates just by addi
 - `page-about.hbs` - Custom template for the `/about/` page
 - `tag-news.hbs` - Custom template for `/tag/news/` archive
 - `author-ali.hbs` - Custom template for `/author/ali/` archive
-
-&nbsp;
-
-# Development
-
-Styles are compiled using Gulp/PostCSS to polyfill future CSS spec. You'll need [Node](https://nodejs.org/), [Yarn](https://yarnpkg.com/) and [Gulp](https://gulpjs.com) installed globally. After that, from the theme's root directory:
-
-```bash
-# Install
-yarn
-
-# Run build & watch for changes
-yarn dev
-```
-
-Now you can edit `/assets/css/` files, which will be compiled to `/assets/built/` automatically.
-
-The `zip` Gulp task packages the theme files into `dist/<theme-name>.zip`, which you can then upload to your site.
-
-```bash
-yarn zip
-```
 
 &nbsp;
 
