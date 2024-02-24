@@ -542,7 +542,10 @@ figure {
   margin: 0;
 }
 
-.kg-width-full,
 .kg-width-wide {
-  // required by gcsan to properly validate the theme
+  max-width: 85vw;
+}
+
+.kg-width-full {
+  max-width: 100vw;
 }
