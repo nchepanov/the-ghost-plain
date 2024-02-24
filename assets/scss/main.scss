@@ -420,16 +420,15 @@ ul.nav {
   margin: 0;
   padding: 0;
   white-space: nowrap;
-  overflow-x: auto; // This will add a horizontal scroll bar if the content is too wide
-  overflow-y: hidden; // This prevents vertical scrolling
+  overflow: hidden;
   list-style-type: none; // Removes the default list styling
 
   li {
     display: inline;
 
     a {
-      padding-left: 0.5rem;
-      padding-right: 0.5rem;
+      padding-left: 0.3rem;
+      padding-right: 0.3rem;
     }
   }
 
@@ -479,6 +478,7 @@ section {
         color: #757575;
         letter-spacing: 1px;
         text-transform: uppercase;
+        font-family: Montserrat, sans-serif;
       }
 
       @media (min-width: 992px) {
