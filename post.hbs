@@ -15,6 +15,20 @@
 
 	{{content}}
 
+	<nav class="post-navigation">
+		{{#next_post}}
+			<a href="{{url}}" class="post-navigation-link post-navigation-next">
+				 &larr;&nbsp;{{title}}
+			</a>
+		{{/next_post}}
+		{{#prev_post}}
+			<a href="{{url}}" class="post-navigation-link post-navigation-prev">
+				{{title}}&nbsp;&rarr; 
+			</a>
+		{{/prev_post}}
+
+	</nav>
+
 </article>
 
 {{/post}}

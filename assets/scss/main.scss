@@ -544,6 +544,8 @@ section {
 
 figure {
   margin: 0;
+  margin-top: 1em;
+  margin-bottom: 1em;
 }
 
 .kg-width-wide {
@@ -552,4 +554,26 @@ figure {
 
 .kg-width-full {
   max-width: 100vw;
+}
+
+.post-navigation {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1em;
+  margin-bottom: 1em;
+
+  a {
+    text-decoration: none;
+    border: none;
+  }
+
+  .post-navigation-prev {
+    text-align: right;
+    margin-left: auto; /* Aligns to the right */
+  }
+
+  .post-navigation-next {
+    text-align: left;
+    margin-right: auto; /* Aligns to the left */
+  }
 }
